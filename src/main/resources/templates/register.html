@@ -1,0 +1,137 @@
+<!doctype html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+	th:replace="base::Layout(~{::body})">
+<head>
+<meta charset="UTF-8" />
+<title>Document</title>
+</head>
+<body>
+
+	<section class="testimonial py-5" id="testimonial">
+		<div class="container">
+			<div class="row ">
+				<div
+					class="col-md-4 py-5 primary-background text-white text-center card shadowed-1">
+					<div class=" ">
+						<div class="card-body">
+							<img class="width-30p" src="/images/logo.png">
+							<h1 class="fw-bold">STOREWALA</h1>
+
+							<p>We provide best and fresh products in the pakistan.</p>
+
+							<p class="text-bottom">
+								Already have an account? <a class="fw-bold text-warning"
+									href="/login">Login!</a>
+							</p>
+						</div>
+					</div>
+				</div>
+				<div class="col-md-8 py-5 border card shadowed-1 ml-2">
+
+
+
+					<h4 class="pb-4 text-center">Please fill with your details</h4>
+
+
+					<form th:action="@{/process-registration}"
+						action="/process-registration" method="POST" class="row g-3"
+						th:object="${user}">
+						<div class="col-md-6">
+
+
+							<div class="form-floating">
+								<input type="text" class="form-control" name="name"
+									id="floatingInputGrid" placeholder="Full Name"
+									th:classappend="${#fields.hasErrors('name') ? 'is-invalid':''}">
+
+
+
+
+								<label for="floatingInputGrid">Full Name</label>
+
+								<div class="invalid-feedback"
+									th:each="e : ${#fields.errors('name')}" th:text="${e}"></div>
+							</div>
+						</div>
+
+
+
+
+
+						<div class="col-md-6">
+							<div class="form-floating">
+								<input type="email" class="form-control" id="floatingInputGrid"
+								name="email"
+									placeholder="name@example.com"
+									th:classappend="${#fields.hasErrors('email') ? 'is-invalid':''}">
+								<label for="floatingInputGrid">Email address</label>
+
+								<div class="invalid-feedback"
+									th:each="e : ${#fields.errors('email')}" th:text="${e}"></div>
+							</div>
+						</div>
+
+
+
+						<div class="col-md-6">
+							<div class="form-floating">
+								<input type="number" class="form-control" id="floatingInputGrid"
+									placeholder="Phone Number"
+									name="phone"
+									th:classappend="${#fields.hasErrors('phone') ? 'is-invalid':''}">
+								<label for="floatingInputGrid">Phone Number</label>
+
+								<div class="invalid-feedback"
+									th:each="e : ${#fields.errors('phone')}" th:text="${e}"></div>
+							</div>
+						</div>
+
+
+						<div class="col-md-6">
+							<div class="form-floating">
+								<select name="user_role" class="form-select"
+									id="floatingSelectGrid"
+									aria-label="Floating label select example">
+									<option value="customer">Customer</option>
+									<option value="seller">Seller</option>
+								</select> <label for="floatingSelectGrid">Select your role</label>
+							</div>
+
+						</div>
+						<div class="col-md-6">
+							<div class="form-floating">
+								<input type="password" name="password" class="form-control" id="floatingInputGrid"
+									placeholder="Password"
+									th:classappend="${#fields.hasErrors('password') ? 'is-invalid':''}"> <label
+									for="floatingInputGrid">Password</label>
+									
+									<div class="invalid-feedback"
+								th:each="e : ${#fields.errors('password')}" th:text="${e}"></div>
+									
+							</div>
+						</div>
+
+						<div class="col-md-6">
+							<div class="form-floating">
+							<input type="password" name="confirm_password" class="form-control" id="floatingInputGrid"
+								placeholder="Confirm Password">
+							<label for="floatingInputGrid">Confirm Password</label>
+						</div>
+						</div>
+
+
+
+						<br>
+
+						<div class="form-row text-center">
+							<button type="submit"
+								class="btn primary-background text-white offset-0 col-8">Register</button>
+						</div>
+					</form>
+				</div>
+			</div>
+		</div>
+	</section>
+
+</body>
+</html>
